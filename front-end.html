@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+
+        baseURL = "http://127.0.0.1:8000/";  //Your URL
+
+        function welcome() {
+        document.getElementById("demo").innerHTML = "Welcome";
+    }
+        function api1() {
+        var request = new XMLHttpRequest(); // Create a request variable and assign a new XMLHttpRequest object to it.
+        request.open('GET', baseURL); // Open a new connection, using the GET request on the URL endpoint
+        request.send();
+
+        request.onload = async function () {
+        var data = JSON.parse(this.response);
+        console.log(data);
+        document.getElementById('api1').InnerHTML = data; // depending on your response targert your desired property.
+        }
+    }
+    </script>
+</head>
+<body>
+<button onclick="welcome()"> welcome </button>
+<div id="demo"></div>
+<button onclick="api1()"> api1 </button>
+<div id="api1"></div>
+</body>
+</html>

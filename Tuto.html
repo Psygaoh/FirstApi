@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TUTO</title>
+</head>
+<body>
+<p>
+    Ceci est un tuto à suivre, il te permettra de mettre en pratique les aspect suivant:
+<ul>
+    <li>
+        Import de librairie</li>
+    <li>    Programmation orientée objet</li>
+    <li>création d'api et notion de GET POST</li>
+</ul>
+</p>
+<hr>
+<p>
+    1:
+    Dans PYCHARM, créé un nouveau projet, "PremierProjet".
+    2:
+    Vide le contenu de ton fichier main.py, et importe le texte suivant:
+</p>
+<code>
+    <p>from fastapi import FastAPI</p>
+    <p>app = FastAPI()</p>
+
+
+    <p>@app.get("/")</p>
+    <p>async def root():</p>
+    <p>    return "Hello World"</p>
+</code>
+<hr>
+
+<p>
+    <a href="http://127.0.0.1:8000/">Puis clique ici</a>
+</p>
+Essaie de reformuler ce que tu viens de faire.
+Puis clique ici,
+<a href="http://127.0.0.1:8000/docs#/default/"> http://127.0.0.1:8000/docs#/default/</a>
+<p>
+    ce dernier lien t'amène sur la documentation du code que tu as écris.
+    Essaie de reformuler et d'expliciter à poulpy ce que tu vois à l'écran
+</p>
+<hr>
+<p>
+    Maintenant que tu as créé ta première api GET, à ton tour d'en refaire une.
+
+    Créé une nouvelle API, qui sera accessible sur l'adresse suivante: http://127.0.0.1:8000/test  et qui au lieu d'afficher le texte "Hello world"
+    affichera une phrase de ton choix
+</p>
+<hr>
+<p>Continuons d'explorer la création d'API</p>
+<p>En se basant sur la documentation sur le lien <a href="https://fastapi.tiangolo.com/tutorial/path-params/">https://fastapi.tiangolo.com/tutorial/path-params/</a> <br/>
+    - Créé un endpoint d'API accessible à l'url suivante: <a href="http://127.0.0.1:8000/greetings/{text}">http://127.0.0.1:8000/greetings/{text}</a> qui
+    prendra en paramètre de chemin (path param) un texte, et qui si le texte est égal à Bonjour, ou BONJOUR, ou bonjour, ou toute autre façon d'écrire bonjour,
+    retournera et affichera "bonjour utilisateur" , sinon, il affichera: "Utilisateur malpoli!"
+    Le paramètre text, devra typé en string, (str)
+</p>
+<hr>
+<p>
+    Dans le dossier de ton projet, créé un nouveau fichier python, que tu appelera "book.py".
+    ce fichier contiendra le texte suivant, formatté correctement: <br>
+    <code>
+        class Book:<br>
+        title: str<br>
+        numberOfPage: int<br>
+        author: str<br>
+        <br><br>
+        def __init__(self, title, numberOfPage, author):<br>
+        self.title = title<br>
+        self.numberOfPage = numberOfPage<br>
+        self.author = author<br>
+    </code><br>
+    Puis créer un nouvel endpoint API, accessible sur: <a href="http://127.0.0.1:8000/demoBook/">http://127.0.0.1:8000/demoBook/</a>
+    Cet endpoint retournera une nouvelle <b>instance</b> de la classe livre, avec les proprietée suivantes:<br>
+    title = Mon premier roman<br>
+    numberOfPage = 420<br>
+    author = Laurence Andraud<br>
+    <br>
+    Pour pouvoir faire cela, il faudra <b>importer</b> la classe Book dans ton fichier main.py ou se trouve ton endpoint d'api.<br>
+    Il faudra ensuite que la méthode de ton api créé une nouvelle instance de la classe Book, en lui passant les bons paramètres.<br>
+</p>
+<hr>
+<p>
+    Maintenant, on continue. <br>
+    Pour le moment, l'auteur est créé avec une chaine de caractère qui défini son nom, mais dans la vraie vie, un auteur est plus qu'un nom. <br>
+    Tu vas devoir créé, dans un nouveau fichier "author.py" une class "author" avec les propriété suivantes<br>
+<ul>
+    <li>Nom</li>
+    <li>Prénom</li>
+    <li>Nationalité</li>
+</ul>
+Ainsi que la méthode __init__ correspondant. <br>
+Une fois que cette classe sera crée, tu vas devoir modifier ta class Book, pour remplacer la string <br>
+de auteur, par cette nouvelle classe author.<br>
+Puis, tu vas devoir modifier la méthode init de ta class book, pour le prendre en compte <br>
+Et enfin: modifier ton appel de la méthode d'initialisation de book, dans ta classe main, pour que le livre soit créé avec un auteur. <br>
+Pour cela, tu as plusieurs façon de faire, soit tu créé une variable 'author' de type Author, et tu l'attribues lors de l'instanciation de book en la passant en paramètre <br>
+soit en passant en paramètre de l'instanciation de Book, un appel à la méthode d'instanciation de Author
+</p>
+<hr>
+<hr>
+<p>
+    Maintenant, on va continuer à tout combiner.<br>
+    Tu vas créer un nouvel endpoint.<br>
+    Dans cet endpoint, tu vas créer une liste de 5 livres, dont certains, sans auteur, pour cela tu attribue la valeur None (écris tel quel) au lieu de Author()<br>
+    Ensuite, tu vas iterer sur cette liste, et pour chaque livre, si l'author est None, tu lui ajoute un auteur de nom "auteur inconnu", et avec tout ces autres paramètres à none. </br>
+    Puis tu retournes cette liste.<br>
+</p>
+<hr>
+<hr>
+<p>
+    <br>L'exercice suivant va aborder les notions d'héritage.
+    <br>Tu trovueras un petit cours ici: <a href="https://www.pierre-giraud.com/python-apprendre-programmer-cours/oriente-objet-heritage-polymorphisme/#:~:text=Pr%C3%A9sentation%20du%20concept%20d'h%C3%A9ritage,qu'il%20y%20a%20acc%C3%A8s.">https://www.pierre-giraud.com/python-apprendre-programmer-cours/oriente-objet-heritage-polymorphisme/#:~:text=Pr%C3%A9sentation%20du%20concept%20d'h%C3%A9ritage,qu'il%20y%20a%20acc%C3%A8s.</a>
+    <br>Pour résumer l'héritage, c'est ce qui désigne le fait que plusieurs classe, puissent appartenir à une grande classe, mais dont la réciproque n'est pas vrai.
+    <br>Par exemple, un tigre et un chat, sont des classes à part, mais sont tout de même des félins.
+    <br>Un félin et un canidé, sont tout deux des mammifères.
+    <br>Un mammifère et un oiseau sont tout deux des animaux.
+    <br>etc.
+    <br>Un manga, et un roman, sont des livres.
+    <br>Mais les livres ne sont pas FORCEMENT des mangas ou des romans.
+    <br>Tu vas maintenant créer une classe Roman avec SEULEMENT la propriété "préface", que tu feras hériter de Book, et dont le constructeur (la méthode init).
+    <br>étendras le constructeur de Book.
+    <br>Ensuite, tu vas modifier ton endpoint pour ne plus créer que des Book, mais des romans.
+    <br>Une fois ça fait, tu vas créer de la même manière, une classe de Manga, une classe de Photobook, chacun avec leurs propres propriétées.
+    <br>Une fois ça fait, on se rend compte qu'on peut aller plus loin.
+    <br>Tu vas créer une classe : BD qui hérite de livre. Puis tu vas modifier manga pour hériter de BD. Puis tu vas créer Franco-belge qui héritera aussi de BD.
+    <br>libre à toi d'ajouter les propriétés de ton choix.
+</p>
+</body>
+</html>
